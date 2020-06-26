@@ -1,6 +1,8 @@
 #include<stdio.h> 
 #include<string.h> 
-#include<stdlib.h> 
+#include<stdlib.h>
+#include<windows.h>
+#include<conio.h>
 #define LL sizeof(BOOK_TYPE)
 
 int main()
@@ -70,4 +72,17 @@ void infor_input()
 		fwrite(&ts,LL,1,fp);
 		fclose(fp);
 	}
+	system("CLS");
+	printf("输入成功\n");
+	printf("请选择（1：返回主界面\t2：输入另一本图书的信息\t0:退出系统):\n");
+	scanf("%d",&n);
+	switch(n)
+	{
+		case 1:system("CLS");break;
+		case 2:system("CLS");infor_input();break;
+		case 0:break;
+		default:printf("无此操作，按任意键返回\n");getch();system("CLS");break;
+	}
 }
+
+

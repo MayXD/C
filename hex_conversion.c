@@ -32,3 +32,29 @@ int main(){
 	}
 	return 0;
 }
+
+int char_to_num(char ch){
+	if(ch>='0' && ch<='9')
+		return ch-'0';
+	else
+		return ch-'A'+10;
+}
+
+
+int num_to_char(int num){
+	if(num>=0 && num<=9)
+		return '0'+num;
+	else
+		return 'A'+num-10;
+}
+
+long source_to_decimal(char temp[],int source){
+	long decimal_num = 0;
+	int length;
+	int i;
+	for(i=0;temp[i]!='\0';i++)
+		length = i;
+	for(i=0;i<length;i++)
+		decimal_num = char_to_num(temp[i])*source + decimal_num;
+
+}
