@@ -1,11 +1,13 @@
 #include<stdio.h>
-#define MAXCHAR 101  /*最大允许字符串长度*/
+#include<math.h>
+#define MAXCHAR 101
+
  
-int char_to_num(char ch);  /*返回字符对应的数字*/ 
-char num_to_char(int num);  /*返回数字对应的字符*/
-long source_to_decimal(char temp[], int source);  /*返回由原数转换成的10进制数*/
-int decimal_to_object(char temp[], long decimal_num, int object);  /*返回转换成目标数制后字符数组的长度*/
-void output(char temp[], int length);  /*将字符数组逆序打印*/
+int char_to_num(char ch);
+char num_to_char(int num);
+long source_to_decimal(char temp[], int source);
+int decimal_to_object(char temp[], long decimal_num, int object);
+void output(char temp[], int length);
  
 
 int main(){
@@ -14,20 +16,20 @@ int main(){
 	int length;
 	long decimal_num;
 	char temp[MAXCHAR];
-	int flag;
+	int flag = 1;
 	while(flag)
 	{
-		printf("转换前的数为： ");
+		printf("old num: ");
 		scanf("%s", temp);
-		printf("转换前的数制为： ");
+		printf("old hex: ");
 		scanf("%d", &source);
-		printf("转换后的数制为： ");
+		printf("new hex: ");
 		scanf("%d", &object);
-		printf("转换后的数为： ");
+		printf("new num: ");
 		decimal_num = source_to_decimal(temp, source);
 		length = decimal_to_object(temp, decimal_num, object);
 		output(temp, length);
-		printf("继续请输入1，否则请输入0： \n");
+		printf("keep going: 1,or else: 0: \n");
 		scanf("%d", &flag);
 	}
 	return 0;
@@ -41,7 +43,7 @@ int char_to_num(char ch){
 }
 
 
-int num_to_char(int num){
+char num_to_char(int num){
 	if(num>=0 && num<=9)
 		return '0'+num;
 	else
@@ -54,7 +56,27 @@ long source_to_decimal(char temp[],int source){
 	int i;
 	for(i=0;temp[i]!='\0';i++)
 		length = i;
-	for(i=0;i<length;i++)
-		decimal_num = char_to_num(temp[i])*source + decimal_num;
+	for(i=0;i<=length;i++)
+		decimal_num += char_to_num (temp[i])*pow(source,length-i);
+	return decimal_num;
 
 }
+
+int decimal_to_object(char temp[], long decimal_num, int object){
+	int i = 0;
+	while(decimal_num){
+		temp[i] = num_to_char(decimal_num%object);
+		decimal_num = decimal_num/object;
+		i++;
+	}
+	temp[i]='\0';
+	return i;
+}
+
+void output(char temp[], int length){
+	int i;
+	for(i=length-1;i>=0;i--)
+		printf("%c",temp[i]);
+	printf("\n");
+}
+
