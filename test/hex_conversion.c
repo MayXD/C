@@ -1,39 +1,35 @@
-#include<stdio.h>
-#include<math.h>
-#define MAXCHAR 101
-
+#include "lib/common.h"
  
-int char_to_num(char ch);
-char num_to_char(int num);
-long source_to_decimal(char temp[], int source);
-int decimal_to_object(char temp[], long decimal_num, int object);
-void output(char temp[], int length);
- 
+// int char_to_num(char ch);
+// char num_to_char(int num);
+// long source_to_decimal(char temp[], int source);
+// int decimal_to_object(char temp[], long decimal_num, int object);
+// void output(char temp[], int length);
 
-int main(){
-	int source;
-	int object;
-	int length;
-	long decimal_num;
-	char temp[MAXCHAR];
-	int flag = 1;
-	while(flag)
-	{
-		printf("old num: ");
-		scanf("%s", temp);
-		printf("old hex: ");
-		scanf("%d", &source);
-		printf("new hex: ");
-		scanf("%d", &object);
-		printf("new num: ");
-		decimal_num = source_to_decimal(temp, source);
-		length = decimal_to_object(temp, decimal_num, object);
-		output(temp, length);
-		printf("keep going: 1,or else: 0: \n");
-		scanf("%d", &flag);
-	}
-	return 0;
-}
+// int main(){
+	// int source;
+	// int object;
+	// int length;
+	// long decimal_num;
+	// char temp[MAXCHAR];
+	// int flag = 1;
+	// while(flag)
+	// {
+		// printf("old num: ");
+		// scanf("%s", temp);
+		// printf("old hex: ");
+		// scanf("%d", &source);
+		// printf("new hex: ");
+		// scanf("%d", &object);
+		// printf("new num: ");
+		// decimal_num = source_to_decimal(temp, source);
+		// length = decimal_to_object(temp, decimal_num, object);
+		// output(temp, length);
+		// printf("keep going: 1,or else: 0: \n");
+		// scanf("%d", &flag);
+	// }
+	// return 0;
+// }
 
 int char_to_num(char ch){
 	if(ch>='0' && ch<='9')
