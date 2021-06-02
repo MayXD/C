@@ -1,4 +1,4 @@
-#include "lib/common.h"
+#include "common.h"
 
 int make_socket(uint16_t port) {
     int sock;
